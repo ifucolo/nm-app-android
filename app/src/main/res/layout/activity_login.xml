@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:id="@+id/layoutMain"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        tools:context=".feature.login.ui.LoginActivity"
+        android:background="@color/colorPrimary">
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/splash_screen"
+            android:layout_marginTop="@dimen/margin_high"
+            android:layout_marginBottom="@dimen/margin_high"/>
+
+    <example.com.nm.widget.InputEditText
+            android:id="@+id/inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_view"
+            android:layout_marginLeft="@dimen/margin_view"
+            android:layout_marginRight="@dimen/margin_view"
+            android:inputType="textEmailAddress"
+            app:hint="@string/hint_email"
+            app:label="@string/email" />
+
+
+    <example.com.nm.widget.InputEditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_view"
+            android:layout_marginRight="@dimen/margin_view"
+            android:layout_marginTop="35dp"
+            android:inputType="textPassword"
+            app:hint="@string/type_password"
+            app:label="@string/password" />
+
+    <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:enabled="false"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/margin_view"
+            android:layout_marginTop="@dimen/margin_view"
+            style="@style/AppTheme.Widget.Button.Sign"/>
+
+</LinearLayout>

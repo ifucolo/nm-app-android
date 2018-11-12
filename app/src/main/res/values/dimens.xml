@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="btn_round_size">4dp</dimen>
+    <dimen name="margin_view">16dp</dimen>
+    <dimen name="margin_high">40dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="medium_margin">10dp</dimen>
+
+</resources>

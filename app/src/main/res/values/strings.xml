@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Nm</string>
+    <string name="preference_file_key">12983uehdn4u2498r3-ef</string>
+    <string name="base_url">https://api.test.thenewmotion.com</string>
+    <string name="basic_header">Basic dGVzdF9jbGllbnRfaWQ6dGVzdF9jbGllbnRfc2VjcmV0=</string>
+
+    <string name="loading">Loading …</string>
+    <string name="error">Unexpected error</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="login_successfully">Login Successfully</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="hint_email">youremail@youremail.com</string>
+    <string name="type_password">type a password</string>
+    <string name="password">Password</string>
+    <string name="header_login">NmApp</string>
+
+    <string name="nm_official">Nm official app</string>
+    <string name="username_password_wrong">username or password is incorrect</string>
+
+    <string name="play_url">https://play.google.com/store/apps/details?id=com.thenewmotion.thenewmotion&amp;hl=en</string>
+    <string name="logout">Logout</string>
+</resources>
