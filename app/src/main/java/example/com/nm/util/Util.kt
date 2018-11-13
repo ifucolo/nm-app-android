@@ -11,7 +11,7 @@ import com.google.gson.JsonParser
 import example.com.nm.feature.home.domain.entity.ChargePoint
 import example.com.nm.util.extensions.readFiletoString
 import java.io.IOException
-import java.util.ArrayList
+import java.util.*
 
 object Util {
 

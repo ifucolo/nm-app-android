@@ -3,7 +3,10 @@ package example.com.nm.feature.api
 import example.com.nm.feature.home.repository.model.UserDataPayload
 import example.com.nm.feature.login.repository.model.UserPayload
 import io.reactivex.Single
-import retrofit2.http.*
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface ServerApi {
 

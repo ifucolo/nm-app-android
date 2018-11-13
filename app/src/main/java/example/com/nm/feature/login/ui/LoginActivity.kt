@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import example.com.nm.R
-import example.com.nm.feature.di.BaseActivity
+import example.com.nm.feature.base.BaseActivity
 import example.com.nm.feature.home.ui.HomeActivity
 import example.com.nm.util.Util.closeInput
 import example.com.nm.util.extensions.onActionDone
@@ -96,6 +96,7 @@ class LoginActivity : BaseActivity() {
 
     private fun showLoginSuccess() {
         startActivity(HomeActivity.launchIntent(this))
+        finish()
     }
 
     private fun showError(errorMsg: String) {

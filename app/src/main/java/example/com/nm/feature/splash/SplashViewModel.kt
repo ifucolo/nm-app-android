@@ -5,7 +5,7 @@ import example.com.nm.feature.pref.Consts
 import example.com.nm.feature.pref.NmPref
 import example.com.nm.util.rx.ReactiveViewModel
 
-class SplashViewModel(val nmPref: NmPref): ReactiveViewModel() {
+class SplashViewModel(private val nmPref: NmPref): ReactiveViewModel() {
 
     val hasToken = MutableLiveData<Boolean>()
 

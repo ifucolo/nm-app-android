@@ -1,11 +1,9 @@
 package example.com.nm.feature.home.ui
 
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Transformations
 import example.com.catdogapp.utill.RxUtils
 import example.com.nm.feature.home.domain.HomeSource
 import example.com.nm.feature.home.domain.entity.UserData
-import example.com.nm.feature.pref.NmPref
 import example.com.nm.util.rx.ReactiveViewModel
 import io.reactivex.rxkotlin.plusAssign
 

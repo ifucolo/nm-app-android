@@ -14,7 +14,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import example.com.nm.R
-import example.com.nm.feature.di.BaseActivity
+import example.com.nm.feature.base.BaseActivity
 import example.com.nm.feature.home.domain.entity.UserData
 import example.com.nm.feature.home.repository.ExpiredTokenException
 import example.com.nm.feature.login.ui.LoginActivity
@@ -88,6 +88,7 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback , NavigationView.OnNavig
     private fun logout() {
         viewModel.cleanUserData()
         startActivity(LoginActivity.launchIntent(this))
+        finish()
     }
 
     private fun setNoConnectionError() {

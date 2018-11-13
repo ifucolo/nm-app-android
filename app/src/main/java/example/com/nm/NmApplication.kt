@@ -5,7 +5,7 @@ import com.facebook.stetho.Stetho
 import example.com.nm.feature.di.appModule
 import example.com.nm.feature.di.prefModule
 import example.com.nm.feature.di.remoteDatasourceModule
-import org.koin.standalone.StandAloneContext.startKoin
+import org.koin.android.ext.android.startKoin
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig
 
 class NmApplication: Application() {
@@ -13,7 +13,7 @@ class NmApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        startKoin(listOf(appModule, prefModule, remoteDatasourceModule))
+        startKoin(this, listOf(prefModule, appModule, remoteDatasourceModule))
 
         CalligraphyConfig.initDefault(CalligraphyConfig.Builder()
             .setDefaultFontPath("fonts/Gibson.ttf")

@@ -1,6 +1,5 @@
 package example.com.nm.feature.di
 
-import android.content.Context
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

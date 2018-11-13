@@ -1,4 +1,4 @@
-package example.com.nm.feature.di
+package example.com.nm.feature.base
 
 import android.app.ProgressDialog
 import android.support.v7.app.AppCompatActivity

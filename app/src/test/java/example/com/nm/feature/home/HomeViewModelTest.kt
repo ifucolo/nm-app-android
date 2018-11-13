@@ -2,7 +2,6 @@ package example.com.nm.feature.home
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.lifecycle.Observer
-import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.inOrder
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
@@ -12,7 +11,6 @@ import example.com.nm.feature.home.domain.entity.UserData
 import example.com.nm.feature.home.ui.HomeViewModel
 import example.com.nm.feature.pref.NmPref
 import example.com.nm.util.TrampolineSchedulerRule
-import io.reactivex.Completable
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Rule

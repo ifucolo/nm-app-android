@@ -4,10 +4,9 @@ import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.lifecycle.Observer
 import com.nhaarman.mockitokotlin2.mock
 import example.com.nm.feature.di.splashViewModelTest
-import example.com.nm.feature.di.testModule
 import org.junit.*
-import org.koin.java.standalone.KoinJavaStarter.startKoin
 import org.koin.standalone.StandAloneContext.closeKoin
+import org.koin.standalone.StandAloneContext.startKoin
 import org.koin.standalone.inject
 import org.koin.test.KoinTest
 import org.mockito.Mockito
