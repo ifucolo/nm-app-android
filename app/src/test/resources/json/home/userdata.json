@@ -1,0 +1,22 @@
+{
+  "externalId": "0015E00000a836H",
+  "email": "programming-assignment@newmotion.com",
+  "country": "United Kingdom",
+  "locale": "en_NL",
+  "lastName": "Assignment",
+  "firstName": "Demo",
+  "id": "dee0bcf4-ca1f-4f24-b551-c6b16e034063",
+  "countryCode": "gb",
+  "status": "active",
+  "_links": {
+    "self": {
+      "href": "/v1/customers/dee0bcf4-ca1f-4f24-b551-c6b16e034063"
+    },
+    "charge-session-history": {
+      "href": "/v1/charge-session-history?jwt=eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0.a6udm5IsV1Qm79q7ykfBlUTofB98zZQoUI9f8dodtl2pE74_xxmDcg.MQRrqrJuBzus5TRz86eF_A.WftYJZncgJN9I7y0AQnmp9f8gxDRnqUmJveQ3ju8Sz_7q_98FCZ1OPSsuUinOW4zXDuQNVAzBLTYQa61D8P7OvAMplYalgr-CIYsCkPN_UQ.DLOIjag7w6PbClhDdKxhTQ"
+    },
+    "mailing-lists": {
+      "href": "/v1/customers/dee0bcf4-ca1f-4f24-b551-c6b16e034063/mailing-lists"
+    }
+  }
+}

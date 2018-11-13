@@ -29,22 +29,5 @@ class HomeRepository(private val serverApi: ServerApi, private  val nmPref: NmPr
             .doOnSuccess {
                 nmPref.loggedUser = it
             }
-            .doOnError {
-                checkError(it)
-            }
-    }
-
-
-    private fun checkError(throwable: Throwable) {
-        if (throwable is HttpException && throwable.code() == 401) {
-            if (!nmPref.getString(Consts.ACCESS_TOKEN_REFRESH).isNullOrEmpty()) {
-                nmPref[Consts.ACCESS_TOKEN] = Consts.ACCESS_TOKEN_REFRESH
-                nmPref[Consts.ACCESS_TOKEN_REFRESH] = null
-
-                getUserInfoServer()
-            } else {
-
-            }
-        }
     }
 }

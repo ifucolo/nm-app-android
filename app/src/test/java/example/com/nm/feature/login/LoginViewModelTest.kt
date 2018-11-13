@@ -6,7 +6,6 @@ import com.nhaarman.mockitokotlin2.inOrder
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import example.com.nm.factory.DataFactory
-import example.com.nm.feature.di.loginViewModelTest
 import example.com.nm.feature.login.domain.LoginSource
 import example.com.nm.feature.login.ui.LoginViewModel
 import example.com.nm.util.TrampolineSchedulerRule
@@ -15,7 +14,6 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.koin.java.standalone.KoinJavaStarter.startKoin
 import org.koin.standalone.StandAloneContext.closeKoin
 import org.koin.test.KoinTest
 import org.mockito.Mockito
@@ -23,9 +21,9 @@ import org.mockito.MockitoAnnotations
 import retrofit2.HttpException
 
 
-class LoginViewModelTest  : KoinTest {
+class LoginViewModelTest : KoinTest {
 
-    lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel: LoginViewModel
     private val loginSource: LoginSource = mock()
 
     private var buttonData: Observer<Boolean> = mock()
@@ -46,9 +44,7 @@ class LoginViewModelTest  : KoinTest {
     @Before
     fun before() {
         MockitoAnnotations.initMocks(this)
-        startKoin(listOf(loginViewModelTest))
         viewModel = LoginViewModel(loginSource)
-
     }
 
     @After
