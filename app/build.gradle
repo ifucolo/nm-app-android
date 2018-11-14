@@ -144,6 +144,7 @@ dependencies {
     // Google Play
     implementation "com.google.android.gms:play-services-maps:$play_services_version"
     implementation "com.google.android.gms:play-services-location:$play_services_version"
+    implementation "com.google.android.gms:play-services-places:$play_services_version"
 
 
     implementation 'pl.charmas.android:android-reactive-location2:2.1@aar'
