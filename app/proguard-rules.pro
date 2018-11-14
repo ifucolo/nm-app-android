@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class example.com.nm.feature.home.domain.entity.** { *; }
+
+-keepattributes Signature
+
+-repackageclasses ''
+-allowaccessmodification

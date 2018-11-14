@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-val remoteDatasourceModule = module {
+val remoteDataSourceModule = module {
     single { providesGson() }
     single { providesInterceptorAuth(get(), androidContext().getString(R.string.basic_header)) }
     single { providesOkHttpClient(get()) }
@@ -38,12 +38,10 @@ fun providesInterceptorAuth(nmPref: NmPref, basicHeader: String) = Interceptor {
 
     val token = nmPref.getString(Consts.ACCESS_TOKEN, null)
 
-    if (request.header("No-Authentication") == null) {
-        if (token != null)
+    if (request.header("No-Authentication") == null && token != null)
             builder.header("Authorization", token)
-        else
-            builder.header("Authorization", basicHeader)
-    }
+    else
+        builder.header("Authorization", basicHeader)
 
     chain.proceed(builder.build())
 }

@@ -12,7 +12,4 @@ class SplashViewModel(private val nmPref: NmPref): ReactiveViewModel() {
     fun checkToken() {
         hasToken.value = !nmPref.getString(Consts.ACCESS_TOKEN).isNullOrEmpty()
     }
-
-    fun chec() = true
-
 }

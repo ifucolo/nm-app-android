@@ -31,5 +31,4 @@ class HomeViewModel(private val source: HomeSource): ReactiveViewModel() {
     }
 
     data class ResultUIModel(val userData: UserData? = null, val error: Throwable? = null)
-
 }

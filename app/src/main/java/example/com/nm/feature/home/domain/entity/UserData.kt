@@ -7,7 +7,6 @@ class UserData(
     val firstName: String,
     val status: String
 ) {
-
     override fun toString(): String {
         return firstName + lastName
     }

@@ -91,7 +91,6 @@ class LoginActivity : BaseActivity() {
         inputPassword.editText.onActionDone {
             btnLogin.callOnClick()
         }
-
     }
 
     private fun showLoginSuccess() {
