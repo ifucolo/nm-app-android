@@ -1,5 +1,6 @@
 package example.com.nm.feature.home.ui
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
@@ -7,6 +8,7 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.view.MenuItem
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -22,11 +24,15 @@ import example.com.nm.util.Util
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.nav_menu.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import permissions.dispatcher.NeedsPermission
+import permissions.dispatcher.RuntimePermissions
+import pl.charmas.android.reactivelocation2.ReactiveLocationProvider
 
-
+@RuntimePermissions
 class HomeActivity : BaseActivity(), OnMapReadyCallback , NavigationView.OnNavigationItemSelectedListener{
 
     private val viewModel: HomeViewModel by viewModel()
+    private var googleMap: GoogleMap? = null
 
     companion object {
 
@@ -43,6 +49,7 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback , NavigationView.OnNavig
         bindListener()
         setupViewModel()
         setData()
+        requestGeoLocationWithPermissionCheck()
     }
 
     private fun setupMap() {
@@ -67,11 +74,10 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback , NavigationView.OnNavig
         })
 
         viewModel.uiData.observe(this, Observer { uiData ->
-           when{
-               uiData?.userData != null -> setUserData(uiData.userData)
-               uiData?.error is ExpiredTokenException -> logout()
-               else -> setNoConnectionError()
-           }
+            when{
+                uiData?.userData != null -> setUserData(uiData.userData)
+                uiData?.error is ExpiredTokenException -> logout()
+            }
         })
     }
 
@@ -81,8 +87,8 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback , NavigationView.OnNavig
     }
 
     private fun setUserData(userData: UserData) {
-        txtStatus.text = userData.status
-        txtUserName.text = userData.toString()
+        txtStatus?.text = userData.status
+        txtUserName?.text = userData.toString()
     }
 
     private fun logout() {
@@ -91,11 +97,7 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback , NavigationView.OnNavig
         finish()
     }
 
-    private fun setNoConnectionError() {
-
-    }
-
-    override fun onMapReady(googleMap: GoogleMap?) {
+    private fun setupMapView() {
         val chargePoints = Util.getChargePoints(this)
 
         chargePoints.forEach {
@@ -109,6 +111,26 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback , NavigationView.OnNavig
         }
     }
 
+    @SuppressLint("MissingPermission")
+    @NeedsPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION)
+    fun requestGeoLocation() {
+        val disposable = ReactiveLocationProvider(this@HomeActivity)
+            .lastKnownLocation
+            .subscribe { lastLocation ->
+                val myLocation =  LatLng(lastLocation.latitude, lastLocation.longitude)
+                googleMap?.isMyLocationEnabled = true
+                googleMap?.moveCamera(CameraUpdateFactory.newLatLng(myLocation))
+                googleMap?.animateCamera(CameraUpdateFactory.zoomTo(15.0f), 2000, null)
+            }
+
+        addDisposable(disposable)
+    }
+
+    override fun onMapReady(googleMapReady: GoogleMap?) {
+        googleMap = googleMapReady
+        setupMapView()
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_official -> Util.openUri(this, getString(R.string.play_url))
@@ -118,5 +140,10 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback , NavigationView.OnNavig
         drawerLayout.closeDrawer(GravityCompat.START)
 
         return true
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        onRequestPermissionsResult(requestCode, grantResults)
     }
 }
