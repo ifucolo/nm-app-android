@@ -18,6 +18,8 @@
     <string name="nm_official">Nm official app</string>
     <string name="username_password_wrong">username or password is incorrect</string>
 
+    <string name="settings">SETTINGS</string>
     <string name="play_url">https://play.google.com/store/apps/details?id=com.thenewmotion.thenewmotion&amp;hl=en</string>
     <string name="logout">Logout</string>
+    <string name="settings_location">To find nearby charge points, allow\naccess to the device location</string>
 </resources>

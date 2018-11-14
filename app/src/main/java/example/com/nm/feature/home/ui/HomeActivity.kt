@@ -4,8 +4,12 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.GravityCompat
 import android.view.MenuItem
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -21,10 +25,14 @@ import example.com.nm.feature.home.domain.entity.UserData
 import example.com.nm.feature.home.repository.ExpiredTokenException
 import example.com.nm.feature.login.ui.LoginActivity
 import example.com.nm.util.Util
+import example.com.nm.util.extensions.action
+import example.com.nm.util.extensions.snack
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.nav_menu.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import permissions.dispatcher.NeedsPermission
+import permissions.dispatcher.OnNeverAskAgain
+import permissions.dispatcher.OnPermissionDenied
 import permissions.dispatcher.RuntimePermissions
 import pl.charmas.android.reactivelocation2.ReactiveLocationProvider
 
@@ -35,6 +43,8 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback , NavigationView.OnNavig
     private var googleMap: GoogleMap? = null
 
     companion object {
+
+        const val RESULT_SETTINGS_LOCATION = 983
 
         fun launchIntent(context: Context): Intent {
             return Intent(context, HomeActivity::class.java)
@@ -126,6 +136,37 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback , NavigationView.OnNavig
         addDisposable(disposable)
     }
 
+    @OnPermissionDenied(android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION)
+    internal fun permissionDenied() {
+        openSnackAction()
+    }
+
+    @OnNeverAskAgain(android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.ACCESS_FINE_LOCATION)
+    internal fun permissionNeverAskAgain() {
+        openSnackAction()
+    }
+
+    private fun openSnackAction() {
+        drawerLayout.snack(R.string.settings_location, Snackbar.LENGTH_INDEFINITE) {
+            action(R.string.settings, ContextCompat.getColor(this@HomeActivity, R.color.colorPrimary)) { actionView ->
+                openAppSettings()
+                dismiss()
+            }
+        }
+    }
+
+    private fun openAppSettings() {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        val uri =  Uri.fromParts("package", packageName, null)
+        intent.data = uri
+        startActivityForResult(intent, RESULT_SETTINGS_LOCATION)
+    }
+
+    private fun checkRequestPermission() {
+        if (googleMap != null)
+            requestGeoLocationWithPermissionCheck()
+    }
+
     override fun onMapReady(googleMapReady: GoogleMap?) {
         googleMap = googleMapReady
         setupMapView()
@@ -146,4 +187,11 @@ class HomeActivity : BaseActivity(), OnMapReadyCallback , NavigationView.OnNavig
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         onRequestPermissionsResult(requestCode, grantResults)
     }
+
+    override fun onStart() {
+        checkRequestPermission()
+
+        super.onStart()
+    }
+
 }
