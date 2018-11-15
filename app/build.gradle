@@ -68,7 +68,7 @@ android {
     }
 
     signingConfigs {
-        holonis {
+        nmapp {
             keyAlias 'nmapp'
             keyPassword 'nmapp123456'
             storePassword 'nmapp123456'

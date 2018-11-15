@@ -15,9 +15,6 @@ import example.com.nm.util.extensions.emptyToNull
 import example.com.nm.util.extensions.setTextOrHide
 import kotlinx.android.synthetic.main.view_input_edit_text.view.*
 
-/**
- * Created by nodo on 5/3/17.
- */
 
 open class InputEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0): LinearLayout(context, attrs, defStyleAttr) {
 
