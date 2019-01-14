@@ -5,8 +5,6 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/android-reactive-location2-2.1.aar/0da0b9bfc3b7b4f814085a76e61b39ba/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/pl.charmas.android/android-reactive-location2/2.1/28431217fdb2a39dd5bd611cd1f34f8d9f0413c1/android-reactive-location2-2.1-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

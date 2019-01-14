@@ -6,16 +6,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
+        android:gravity="center"
         tools:context=".feature.login.ui.LoginActivity"
         android:background="@color/colorPrimary">
 
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:src="@drawable/splash_screen"
-            android:layout_marginTop="@dimen/margin_high"
-            android:layout_marginBottom="@dimen/margin_high"/>
 
     <example.com.nm.widget.InputEditText
             android:id="@+id/inputEmail"
